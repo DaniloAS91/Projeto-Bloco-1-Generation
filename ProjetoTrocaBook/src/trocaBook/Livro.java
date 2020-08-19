@@ -28,46 +28,54 @@ public class Livro {
 	
 	// Getters and Setters
 
-	public final String getTitulo() {
+	public String getTitulo() {
 		return titulo;
 	}
 
-	public final void setTitulo(String titulo) {
+	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
-	public final String getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
 
-	public final void setCategoria(String categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 
-	public final String getAutor() {
+	public String getAutor() {
 		return autor;
 	}
 
-	public final void setAutor(String autor) {
+	public void setAutor(String autor) {
 		this.autor = autor;
 	}
 
-	public final int getCod() {
+	public int getCod() {
 		return cod;
 	}
 
-	public final void setCod(int cod) {
+	public void setCod(int cod) {
 		this.cod = cod;
 	}
 
-	public final int getQtde() {
+	public int getQtde() {
 		return qtde;
 	}
 
-	public final void setQtde(int qtde) {
+	public void setQtde(int qtde) {
 		this.qtde = qtde;
 	}
 	
+	public String imprimeLivro() {
+		return "Titulo: "+this.titulo+
+				"\nAutor: "+this.autor+
+				"\nCategoria: "+this.categoria+
+				"\nCódigo: "+this.cod+
+				"\nQtde: "+this.qtde;
+				
+	}
 
 	
 }

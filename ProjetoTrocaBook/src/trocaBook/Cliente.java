@@ -21,27 +21,27 @@ public class Cliente {
 	
 	// Getters and Setters
 	
-	public final String getNome() {
+	public String getNome() {
 		return nome;
 	}
 
-	public final void setNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public final String getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public final void setCpf(String cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	public final String getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
 
-	public final void setEndereco(String endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 	

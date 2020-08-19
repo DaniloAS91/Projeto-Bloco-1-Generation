@@ -2,8 +2,6 @@ package trocaBook;
 
 import java.util.Scanner;
 
-import jdk.nashorn.internal.runtime.ListAdapter;
-
 public class TesteBook {
 	public static void main (String args[])
 	{
@@ -11,11 +9,13 @@ public class TesteBook {
 		GerenciaLivros gl = new GerenciaLivros();
 		
 		int op = -1, busca;
-		String cpf;
+		String cpf, nome, end; 		// dados do cliente
+		String titulo,autor,cat;	// dados do livro
+		int codLv, qtdeLv; 			// Código do livro e Qtde de Livros
 		
 		while(op != 0) {
 			
-			System.out.println("Menu:"
+			System.out.println("\nMenu:"
 					+ "\nEscolha: \n"
 					+ "\n1 - Cadastrar Cliente"
 					+ "\n2 - Deletar Cliente"
@@ -29,20 +29,30 @@ public class TesteBook {
 			switch(op) {
 			
 			case 1 :
-				Cliente cl = new Cliente(null, null, null);
+			
+				System.out.println("\n-- Cadastro de Cliente --");
+				sc.nextLine();
+				System.out.println("Digite o Nome do Cliente: ");
+				nome = sc.nextLine().toUpperCase();				
 				
-				System.out.println("Digite o Nome do Clinte: ");
-				cl.setNome(sc.next());
 				System.out.println("Digite o CPF do Cliente");
-				cl.setCpf(sc.next());
-				System.out.println("Digite o Endereço do Cliente;");
-				cl.setEndereco(sc.next());
+				cpf = sc.next();
 				
+				sc.nextLine();
+				System.out.println("Digite o Endereço do Cliente;");
+				end = sc.nextLine().toUpperCase();
+				
+				
+				
+				Cliente cl = new Cliente(nome, cpf, end);
+				System.out.println(cl.dadosCliente());
 				gl.cadastraCliente(cl);
+				
 				
 				break;
 				
 			case 2 :
+				System.out.println("\n-- Remoção de Cliente --");
 				System.out.println("Digite o CPF do cliente para remover: ");
 				cpf = sc.next();
 				gl.removeCliente(cpf);
@@ -50,25 +60,35 @@ public class TesteBook {
 				break;
 				
 			case 3 :
-				Livro lv = new Livro(null, null, null, 0, 0);
 				
+				
+				System.out.println("\n-- Cadastro de Livro --");
+				sc.nextLine();
 				System.out.println("Digite o Titulo do Livro: ");
-				lv.setTitulo(sc.next());
-				System.out.println("Digite o Autor do Livro: ");
-				lv.setAutor(sc.next());
-				System.out.println("Digite a Categoria do Livro: ");
-				lv.setCategoria(sc.next());
-				System.out.println("Digite o Código do Livro: ");
-				lv.setCod(sc.nextInt());
-				System.out.println("Digite a Qtde de Livros: ");
-				lv.setQtde(sc.nextInt());
+				titulo = sc.nextLine().toUpperCase();
 				
+				
+				System.out.println("Digite o Autor do Livro: ");
+				autor = sc.nextLine().toUpperCase();
+				
+				sc.nextLine();
+				System.out.println("Digite a Categoria do Livro: ");
+				cat = sc.nextLine().toUpperCase();
+				
+				System.out.println("Digite o Código do Livro: ");
+				codLv = sc.nextInt();
+				
+				System.out.println("Digite a Qtde de Livros: ");
+				qtdeLv = sc.nextInt();
+				
+				Livro lv = new Livro(titulo, cat, autor, codLv, qtdeLv);
 				gl.cadastraLivro(lv);
 				
 				break;
 				
 			case 4 :
-				System.out.println("Digite o Código do Livro para Remover: ");
+				System.out.println("\n-- Excluir Livro --");
+				System.out.println("\nDigite o Código do Livro para Remover: ");
 				busca = sc.nextInt();
 				
 				gl.removeLivro(busca);
@@ -76,19 +96,21 @@ public class TesteBook {
 				break;
 				
 			case 5 :
-				System.out.println("Digite o Código do Livro: ");
-				busca = sc.nextInt();
+				System.out.println("\n-- Lista de Livros --");
 				
-				gl.consultaLivro(busca);
+				gl.consultaLivro();
 				
 				break;
 				
 			case 6 :
 				
+				System.out.println("\n-- Troca de Livros --");
 				System.out.println("Digite o Código do Livro: ");
 				busca = sc.nextInt();
+				System.out.println("Digite o seu CPF: ");
+				cpf = sc.next();
 				
-				gl.trocaLivro(busca);
+				gl.trocaLivro(busca, cpf);
 				
 				break;
 				
@@ -97,7 +119,7 @@ public class TesteBook {
 				break;
 				
 			default:
-				System.out.println("Ops... a mão escorregou... tente novamente!!");
+				System.out.println("Ops... 70 70 se não der 70 novamente... ;P !!");
 					
 			}
 			

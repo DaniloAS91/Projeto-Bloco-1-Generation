@@ -1,19 +1,25 @@
 package trocaBook;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class GerenciaLivros{
 	
 	List <Cliente> listaCliente = new ArrayList<Cliente>();
 	List <Livro> listaLivros = new ArrayList<Livro>();
-	List <Integer> listaDadosTroca = new ArrayList<Integer>();
 	
 	
 	public void cadastraLivro(Livro l) { //OK
-		listaLivros.add(l);
-		
+		if(listaLivros.contains(l)) {
+			for (Livro lv : listaLivros) {
+				if(l.getCod() == lv.getCod()) {
+					lv.setQtde(lv.getQtde()+l.getQtde());
+				}
+			}
+		}
+		else {
+			listaLivros.add(l);
+		}
 	}
 	
 	public void removeLivro(int cod) { //OK
@@ -22,6 +28,7 @@ public class GerenciaLivros{
 				if(l.getCod() == cod) {
 					listaLivros.remove(l);
 					System.out.println("Livro Removido!!");
+					break;
 				}		
 			}
 		}
@@ -32,8 +39,13 @@ public class GerenciaLivros{
 	}
 	
 	public void cadastraCliente(Cliente c) { // OK
-		listaCliente.add(c);
-		
+		if(listaCliente.contains(c)) {
+			System.out.println("Cliente ja cadastrado!!");
+		}
+		else {
+			listaCliente.add(c);
+			System.out.println("Cliente Cadastrado com Sucesso!!");
+		}
 	}
 	
 	public void removeCliente(String cpf) { // OK
@@ -43,6 +55,7 @@ public class GerenciaLivros{
 				if(c.getCpf().equals(cpf)) {
 					listaCliente.remove(c);
 					System.out.println("Cliente Removido!!");
+					break;
 				}
 		}
 		else {
@@ -50,18 +63,51 @@ public class GerenciaLivros{
 		}
 	}
 	
-	public String consultaLivro(int cod) {
+	public void consultaLivro() { // OK
 		if (listaLivros.isEmpty() != true) {
 			for (Livro lv : listaLivros) {
-				if (lv.getCod() == cod) {
+				System.out.println(lv.dadosLivro());
+				System.out.println("\n");
 					
-				}
 			}
+		}
+		else {
+			System.out.println("\nNenhum Livro Cadastrado para Troca!!");
 		}
 			
 	}
 	
-	public void trocaLivro() {
-		
+	public void trocaLivro(int cod, String cpf) { //OK
+		if (listaLivros.isEmpty() != true && listaCliente.isEmpty() != true) {
+			
+			for (Cliente cl: listaCliente) {
+				if (cl.getCpf().equals(cpf)) {
+					for (Livro lv : listaLivros) {
+						if (lv.getCod() == cod) {
+							
+							System.out.println("\n\n-- Recibo de Troca --"
+											+ "\nNome do Cliente: "+ cl.getNome()+
+												"\nCPF: "+ cl.getCpf()+
+												"\nEndereço: "+ cl.getEndereco()+
+												"\nDados do Livro: "+
+												"\nTitulo: "+ lv.getTitulo()+
+												"\nAutor: "+ lv.getAutor()+
+												"\nCódigo: "+ lv.getCod()+
+												"\nQtde: 01");
+							listaLivros.remove(lv);							
+							System.out.println("Agora só Efetuar a Troca!!\nBoa Leitura");
+							break;
+							
+						}
+					}
+					
+				}
+			}
+		}
+		else {
+			System.out.println("Nenhum Livro ou Cliente Cadastrado!!");
+		}
+			
 	}
+	
 }

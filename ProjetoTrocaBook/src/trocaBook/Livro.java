@@ -19,7 +19,7 @@ public class Livro {
 	
 	
 	public String dadosLivro() { // retorna dados do livro;
-		return "\nTítulo: "+
+		return "\nTítulo: "+titulo+
 				"\nAutor: "+autor+
 				"\nCategoria: "+categoria+
 				"\nCódigo: "+cod;

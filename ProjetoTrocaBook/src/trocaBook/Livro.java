@@ -1,6 +1,6 @@
 package trocaBook;
 
-public class Livro {
+public class Livro extends Cliente{
 	
 	private String titulo;
 	private String categoria;
@@ -8,21 +8,22 @@ public class Livro {
 	private int cod;
 	private int qtde;
 	
-	
-	public Livro(String titulo, String categoria, String autor, int cod, int qtde) {
+	public Livro(String nome, String cpf, String endereco, String tel, String titulo, String categoria, String autor,
+			int cod, int qtde) {
+		super(nome, cpf, endereco, tel);
 		this.titulo = titulo;
 		this.categoria = categoria;
 		this.autor = autor;
 		this.cod = cod;
 		this.qtde = qtde;
 	}
-	
-	
+
 	public String dadosLivro() { // retorna dados do livro;
 		return "\nTítulo: "+titulo+
 				"\nAutor: "+autor+
 				"\nCategoria: "+categoria+
-				"\nCódigo: "+cod;
+				"\nCódigo: "+cod+
+				"\nAnunciado Por: "+super.getNome();
 				
 	}
 	
@@ -76,6 +77,4 @@ public class Livro {
 				"\nQtde: "+this.qtde;
 				
 	}
-
-	
 }

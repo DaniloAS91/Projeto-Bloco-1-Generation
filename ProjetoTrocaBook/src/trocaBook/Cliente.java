@@ -4,23 +4,26 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private String endereco;
+	private String tel;
 	
 	
-	public Cliente(String nome, String cpf, String endereco) {
+	public Cliente(String nome, String cpf, String endereco, String tel) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
+		this.tel = tel;
 	}
 	
 	public String dadosCliente() { // retorna dados do Cliente
 		return "\nNome: "+nome+
 				"\nCPF: "+cpf+
-				"\nEndereço: "+endereco;
+				"\nEndereço: "+endereco+
+				"\nTelefone: "+tel;
 				
 	}
 	
 	// Getters and Setters
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -45,8 +48,12 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 	
-	
-	
-	
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 	
 }
